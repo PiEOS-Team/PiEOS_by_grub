@@ -21,6 +21,12 @@ Use `make` to make files
 make
 ```
 
+Run PiEOS
+
+```sh
+qemu make
+```
+
 ## Updates
 
 <details>
