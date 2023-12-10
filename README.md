@@ -21,9 +21,10 @@ Use `make` to make files
 make
 ```
 
-Run PiEOS
+## Boot
 
-```sh
+use this command to boot PiEOS
+```
 qemu make
 ```
 
@@ -52,3 +53,12 @@ qemu make
 - fix the problem of cannot compile
 
 </details>
+
+## Developers
+
+...
+
+## Thanks
+
+...
+
