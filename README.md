@@ -1,3 +1,7 @@
+## Build
+
+Note: You need to install qemu or bochs, gcc
+
 ## Updates
 
 <details>
