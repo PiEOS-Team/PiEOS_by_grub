@@ -1,3 +1,5 @@
+[简体中文](README_cn.md)
+
 ## Build
 
 <i><strong> Note: You may need to install qemu, gcc, g++, GNU make and git before build.</strong></i>
