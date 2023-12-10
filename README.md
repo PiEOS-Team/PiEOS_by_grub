@@ -1,6 +1,19 @@
 ## Build
 
-Note: You need to install qemu or bochs, gcc
+<i><strong> Note: You may need to install qemu or bochs, gcc, g++ and git before build.</strong></i>
+
+1. clone the repo
+
+```sh
+git clone https://github.com/PiEOS-Team/PiEOS.git
+```
+
+2. use `Makefile` to make files
+
+```sh
+chmod +x Makefile
+Makefile
+```
 
 ## Updates
 
