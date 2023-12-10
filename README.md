@@ -4,13 +4,13 @@
 
 1. clone the repo
 
-```sh
+```cmd
 git clone https://github.com/PiEOS-Team/PiEOS.git
 ```
 
 2. use `Makefile` to make files
 
-```sh
+```cmd
 chmod +x Makefile
 Makefile
 ```
