@@ -1,18 +1,24 @@
 ## Build
 
-<i><strong> Note: You may need to install qemu or bochs, gcc, g++ and git before build.</strong></i>
+<i><strong> Note: You may need to install qemu, gcc, g++, GNU make and git before build.</strong></i>
+
+Install qemu and create a link
+
+```sh
+sudo apt install qemu
+sudo ln -s /usr/bin/qemu-system-i386 /usr/bin qemu
+```
 
 Clone the repo
 
-```cmd
+```bush
 git clone https://github.com/PiEOS-Team/PiEOS.git
 ```
 
-Use `Makefile` to make files
+Use `make` to make files
 
-```cmd
-chmod +x Makefile
-Makefile
+```sh
+make
 ```
 
 ## Updates
