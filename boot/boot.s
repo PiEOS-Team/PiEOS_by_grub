@@ -60,7 +60,7 @@ start:
     cli
     mov esp, STACK_TOP
     mov ebp, 0
-    and esp 0FFFFFFF0H
+    and esp, 0FFFFFFF0H
     mov [glb_mboot_ptr], ebx
     call kern_entry
 stop:
