@@ -5,13 +5,24 @@
 
 <i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make 和 git 。</strong></i>
 
+准备工作
+
+1. 安装git，gcc，g++，GNU make，NASM
+
+```bush
+sudo apt install git
+sudo apt install build-essential
+sudo apt install nasm
+```
+
 
 安装qemu并建立链接
 
 
-```sh
+```bush
 
 sudo apt install qemu
+sudo apt install qemu-system
 
 sudo ln -s /usr/bin/qemu-system-i386 /usr/bin qemu
 
@@ -31,7 +42,7 @@ git clone https://github.com/PiEOS-Team/PiEOS.git
 使用 `make` 编译文件
 
 
-```sh
+```bush
 
 make
 
@@ -43,7 +54,7 @@ make
 
 使用此命令来启动PiEOS
 
-```
+```bush
 
 qemu make
 
