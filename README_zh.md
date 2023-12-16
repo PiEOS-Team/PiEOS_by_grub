@@ -55,6 +55,17 @@ qemu make
 
 ## 更新
 
+<details>
+
+<summary>0.0.4 Alpha</summary>
+
+- 修复了一些问题
+
+- 由RainySoft-Team编译
+
+- 非常感谢RainySoft-Team
+
+</details>
 
 <details>
 
@@ -83,11 +94,11 @@ qemu make
 
 ## 开发者
 
-@kuqilin
+kuqilin
 
 ## 特别鸣谢
 
-敬请期待
+RainySoft-Team
 
 
 
