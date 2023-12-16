@@ -20,12 +20,10 @@ sudo apt install nasm
 
 
 ```bush
-
 sudo apt install qemu
 sudo apt install qemu-system
 
 sudo ln -s /usr/bin/qemu-system-i386 /usr/bin qemu
-
 ```
 
 
@@ -33,9 +31,7 @@ sudo ln -s /usr/bin/qemu-system-i386 /usr/bin qemu
 
 
 ```bush
-
 git clone https://github.com/PiEOS-Team/PiEOS.git
-
 ```
 
 
@@ -43,9 +39,7 @@ git clone https://github.com/PiEOS-Team/PiEOS.git
 
 
 ```bush
-
 make
-
 ```
 
 
