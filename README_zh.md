@@ -49,9 +49,7 @@ make
 使用此命令来启动PiEOS
 
 ```bush
-
 qemu make
-
 ```
 
 
