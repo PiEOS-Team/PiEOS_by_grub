@@ -91,7 +91,7 @@ qemu make
 
 ## 开发者
 
-github@kuqilin
+@github/kuqilin
 
 ## 特别鸣谢
 
