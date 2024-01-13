@@ -43,6 +43,8 @@ clean:
 
 .PHONY:update_image
 update_image:
+        test_dir := /mnt/kernel
+        $(shell if [! -e $(test_dir) ];then mkdir -p $(test_dir);fi)
 	sudo mount floppy.img /mnt/kernel
 	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
 	sleep 1
