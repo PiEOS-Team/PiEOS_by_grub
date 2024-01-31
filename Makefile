@@ -22,7 +22,7 @@ C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protect
 LD_FLAGS = -T scripts/kernel.ld -m elf_i386 -nostdlib
 ASM_FLAGS = -f elf -g -F stabs
 
-all: $(S_OBJECTS) $(C_OBJECTS) link update_image
+all: link pieos_kernel.iso
 
 # The automatic variable `$<' is just the first prerequisite
 .c.o:
@@ -33,7 +33,7 @@ all: $(S_OBJECTS) $(C_OBJECTS) link update_image
 	@echo 编译汇编文件 $< ...
 	$(ASM) $(ASM_FLAGS) $<
 
-link:
+link:$(S_OBJECTS) $(C_OBJECTS)
 	@echo 链接内核文件...
 	$(LD) $(LD_FLAGS) $(S_OBJECTS) $(C_OBJECTS) -o pieos_kernel
 
@@ -60,25 +60,22 @@ clean:
 
 .PHONY:iso
 pieos_kernel.iso:pieos_kernel
-    apt install xorriso
-    apt install grub-pc-bin
-    @echo 创建可启动iso镜像
-    mkdir -p iso/boot/grub
-    cp $< iso/boot/ 
- ​   echo 'set timeout=0' > iso/boot/grub/grub.cfg 
-    echo 'set default=0' >> iso/boot/grub/grub.cfg 
-    echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
-    echo '        multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg 
- ​   echo '        boot' >> iso/boot/grub/grub.cfg 
- ​   echo '}' >> iso/boot/grub/grub.cfg 
- ​   grub-mkrescue --output=$@ iso 
-    rm -rf iso
-    
-    
+#    apt install xorriso
+#    apt install grub-pc-bin
+#    mkdir -p iso/boot/grub
+#    cp $< iso/boot/
+#    echo 'set timeout=3' > iso/boot/grub/grub.cfg
+#    echo 'set default=0' >> iso/boot/grub/grub.cfg
+#    echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
+#    echo '        multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg
+#    echo '        boot' >> iso/boot/grub/grub.cfg
+#    echo '}' >> iso/boot/grub/grub.cfg
+#    grub-mkrescue --output=$@ iso
+#    rm -rf iso
 
 .PHONY:qemu
 qemu:
-	qemu -fda floppy.img -boot a	
+	qemu -cdrom pieos_kernel.iso
 	#add '-nographic' option if using server of linux distro, such as fedora-server,or "gtk initialization failed" error will occur.
 
 .PHONY:bochs
@@ -87,7 +84,7 @@ bochs:
 
 .PHONY:debug
 debug:
-	qemu -S -s -fda floppy.img -boot a &
+	qemu -S -s -cdrom pieos_kernel.iso -boot a &
 	sleep 1
 	cgdb -x scripts/gdbinit
 
