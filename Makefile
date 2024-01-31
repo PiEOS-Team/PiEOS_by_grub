@@ -62,7 +62,7 @@ clean:
 pieos_kernel.iso:pieos_kernel
 #    apt install xorriso
 #    apt install grub-pc-bin
-    echo 创建可启动iso镜像
+    @echo 创建可启动iso镜像
     mkdir -p iso/boot/grub
     cp $< iso/boot/ 
  ​   echo 'set timeout=0' > iso/boot/grub/grub.cfg 
