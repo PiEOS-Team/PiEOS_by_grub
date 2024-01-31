@@ -60,6 +60,8 @@ clean:
 
 .PHONY:iso
 pieos_kernel.iso:pieos_kernel
+    sudo apt install xorriso
+    sudo apt install grub-pc-bin
     echo 创建可启动iso镜像
     mkdir -p iso/boot/grub
     cp $< iso/boot/ 
