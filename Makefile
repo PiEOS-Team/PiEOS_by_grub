@@ -62,25 +62,21 @@ clean:
 pieos_kernel.iso:pieos_kernel
 #    apt install xorriso
 #    apt install grub-pc-bin
-#    mkdir -p iso/boot/grub
-#    cp $< iso/boot/
-#    echo 'set timeout=3' > iso/boot/grub/grub.cfg
-#    echo 'set default=0' >> iso/boot/grub/grub.cfg
-#    echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
-#    echo '        multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg
-#    echo '        boot' >> iso/boot/grub/grub.cfg
-#    echo '}' >> iso/boot/grub/grub.cfg
-#    grub-mkrescue --output=$@ iso
-#    rm -rf iso
+    mkdir -p iso/boot/grub
+    cp $< iso/boot/
+    echo 'set timeout=3' > iso/boot/grub/grub.cfg
+    echo 'set default=0' >> iso/boot/grub/grub.cfg
+    echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
+    echo '        multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg
+    echo '        boot' >> iso/boot/grub/grub.cfg
+    echo '}' >> iso/boot/grub/grub.cfg
+    grub-mkrescue --output=$@ iso
+    rm -rf iso
 
 .PHONY:qemu
 qemu:
 	qemu -cdrom pieos_kernel.iso
 	#add '-nographic' option if using server of linux distro, such as fedora-server,or "gtk initialization failed" error will occur.
-
-.PHONY:bochs
-bochs:
-	bochs -f scripts/bochsrc.txt
 
 .PHONY:debug
 debug:
