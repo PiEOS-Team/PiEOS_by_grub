@@ -1,9 +1,0 @@
-name: build
-on: push
-jobs:
-  build:
-    name: main
-    runs-on: ubuntu-latest
-    steps:
-      - run: sudo mkdir /mnt/kernel
-      - run: make
