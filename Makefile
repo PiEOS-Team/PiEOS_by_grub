@@ -41,22 +41,38 @@ link:
 clean:
 	$(RM) $(S_OBJECTS) $(C_OBJECTS) pieos_kernel
 
-.PHONY:update_image
-update_image:
-        test_dir := /mnt/kernel
-        $(shell if [! -e $(test_dir) ];then mkdir -p $(test_dir);fi)
-	sudo mount floppy.img /mnt/kernel
-	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
-	sleep 1
-	sudo umount /mnt/kernel
+#.PHONY:update_image
+#update_image:
+#        test_dir := /mnt/kernel
+#        $(shell if [! -e $(test_dir) ];then mkdir -p $(test_dir);fi)
+#	sudo mount floppy.img /mnt/kernel
+#	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
+#	sleep 1
+#	sudo umount /mnt/kernel
+#
+#.PHONY:mount_image
+#mount_image:
+#	sudo mount floppy.img /mnt/kernel
+#
+#.PHONY:umount_image
+#umount_image:
+#	sudo umount /mnt/kernel
 
-.PHONY:mount_image
-mount_image:
-	sudo mount floppy.img /mnt/kernel
-
-.PHONY:umount_image
-umount_image:
-	sudo umount /mnt/kernel
+.PHONY:iso
+pieos_kernel.iso:pieos_kernel
+    echo 创建可启动iso镜像
+    mkdir -p iso/boot/grub
+    cp $< iso/boot/ 
+ ​   echo 'set timeout=0' > iso/boot/grub/grub.cfg 
+    echo 'set default=0' >> iso/boot/grub/grub.cfg 
+    echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
+    echo '        multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg 
+ ​   echo '        boot' >> iso/boot/grub/grub.cfg 
+ ​   echo '}' >> iso/boot/grub/grub.cfg 
+ ​   grub-mkrescue --output=$@ iso 
+    rm -rf iso
+    
+    
 
 .PHONY:qemu
 qemu:
