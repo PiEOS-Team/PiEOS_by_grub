@@ -41,22 +41,22 @@ link:
 clean:
 	$(RM) $(S_OBJECTS) $(C_OBJECTS) pieos_kernel
 
-.PHONY:update_image
-update_image:
-        test_dir := /mnt/kernel
-        $(shell if [! -e $(test_dir) ];then mkdir -p $(test_dir);fi)
-	sudo mount floppy.img /mnt/kernel
-	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
-	sleep 1
-	sudo umount /mnt/kernel
-
-.PHONY:mount_image
-mount_image:
-	sudo mount floppy.img /mnt/kernel
-
-.PHONY:umount_image
-umount_image:
-	sudo umount /mnt/kernel
+#.PHONY:update_image
+#update_image:
+#        test_dir := /mnt/kernel
+#        $(shell if [! -e $(test_dir) ];then mkdir -p $(test_dir);fi)
+#	sudo mount floppy.img /mnt/kernel
+#	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
+#	sleep 1
+#	sudo umount /mnt/kernel
+#
+#.PHONY:mount_image
+#mount_image:
+#	sudo mount floppy.img /mnt/kernel
+#
+#.PHONY:umount_image
+#umount_image:
+#	sudo umount /mnt/kernel
 
 .PHONY:qemu
 qemu:
