@@ -15,7 +15,7 @@ English | [简体中文](README_zh.md)
 
 <i><strong> Note: You may need to install qemu, gcc, g++, GNU make, git and grub-mkrescue before build.</strong></i>
 
-Install gcc, g++, GNU make, git and nasm
+Install gcc, g++, GNU make, git, nasm and grub-mkrescue
 
 ```bush
 sudo apt install build-essential
