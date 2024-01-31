@@ -58,6 +58,22 @@ clean:
 #umount_image:
 #	sudo umount /mnt/kernel
 
+.PHONY:iso
+pieos_kernel.iso:pieos_kernel
+    echo 创建可启动iso镜像
+    mkdir -p iso/boot/grub
+    cp $< iso/boot/ 
+ ​   echo 'set timeout=0' > iso/boot/grub/grub.cfg 
+    echo 'set default=0' >> iso/boot/grub/grub.cfg 
+    echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
+    echo '        multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg 
+ ​   echo '        boot' >> iso/boot/grub/grub.cfg 
+ ​   echo '}' >> iso/boot/grub/grub.cfg 
+ ​   grub-mkrescue --output=$@ iso 
+    rm -rf iso
+    
+    
+
 .PHONY:qemu
 qemu:
 	qemu -fda floppy.img -boot a	
