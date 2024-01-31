@@ -21,5 +21,8 @@
 int kern_entry(){
 	console_clear();
 	console_write_color("Hello, PiEOS!\n", rc_black, rc_green);
+	console_write("Now is");
+	get_data_time();
+	console_write("(UTC+8)");
 	return 0;
 }
