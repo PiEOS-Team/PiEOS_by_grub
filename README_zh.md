@@ -3,16 +3,17 @@
 ## 编译
 
 
-<i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make 和 git 。</strong></i>
+<i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make，git 和 grub-mkrescue 。</strong></i>
 
 准备工作
 
-1. 安装git，gcc，g++，GNU make，NASM
+1. 安装 git，gcc，g++，GNU make，NASM 和 grub-mkrescue
 
 ```bush
 sudo apt install git
 sudo apt install build-essential
 sudo apt install nasm
+sudo apt install grub-pc-bin
 ```
 
 
