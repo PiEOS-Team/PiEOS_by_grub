@@ -13,7 +13,7 @@ English | [简体中文](README_zh.md)
 
 ## Build
 
-<i><strong> Note: You may need to install qemu, gcc, g++, GNU make and git before build.</strong></i>
+<i><strong> Note: You may need to install qemu, gcc, g++, GNU make, git and grub-mkrescue before build.</strong></i>
 
 Install gcc, g++, GNU make, git and nasm
 
@@ -21,6 +21,7 @@ Install gcc, g++, GNU make, git and nasm
 sudo apt install build-essential
 sudo apt install git
 sudo apt install nasm
+sido apt install grub-pc-bin
 ```
 
 Install qemu and create a link
@@ -49,7 +50,7 @@ make
 use this command to boot PiEOS
 
 ```
-qemu make
+make qemu
 ```
 
 ## Updates
