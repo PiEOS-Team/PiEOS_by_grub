@@ -15,7 +15,7 @@ jobs:
     - name: pre
       run: sudo apt install xorriso
     - name: install
-      run: sudo apt install grub-efi-amd64-bin
+      run: sudo apt install grub-pc-bin
     - uses: actions/checkout@v3
     - name: configure
       run: ./configure
