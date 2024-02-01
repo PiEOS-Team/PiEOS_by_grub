@@ -10,73 +10,78 @@ static uint8_t read_cmos(uint8_t p){
     return data;
 }
 
-static uint32_t get_hour(){
-    return bcd2hex(read_cmos(CMOS_CUR_HOUR));
+struct DateTime{
+    uint32_t year;
+    uint32_t month;
+    uint32_t day;
+    uint32_t hour;
+    uint32_t minute;
+    uint32_t second;
+};
+
+static struct DateTime get_current_datetime(){
+    struct DateTime dt;
+
+    dt.second = bcd2hex(read_cmos(CMOS_CUR_SEC));
+    dt.minute = bcd2hex(read_cmos(CMOS_CUR_MIN));
+    dt.hour = bcd2hex(read_cmos(CMOS_CUR_HOUR));
+
+    dt.day = bcd2hex(read_cmos(CMOS_MON_DAY));
+    dt.month = bcd2hex(read_cmos(CMOS_CUR_MON));
+    dt.year = bcd2hex(read_cmos(CMOS_CUR_YEAR)) + (bcd2hex(read_cmos(CMOS_CUR_CEN)) * 100) + 1980;
+
+    return dt;
 }
 
-static uint32_t get_min(){
-    return bcd2hex(read_cmos(CMOS_CUR_MIN));
+static int is_leap_year(int year){
+    if (year % 4 != 0)
+        return 0;
+    if (year % 400 == 0)
+        return 1;
+    return year % 100 != 0;
 }
 
-static uint32_t get_sec(){
-    return bcd2hex(read_cmos(CMOS_CUR_SEC));
-}
+// UTC 转 UTC + 8
+void adjust_to_utc8(struct DateTime* dt) {
+    dt->hour += 8;
+    if (dt->hour >= 24) {
+        dt->hour -= 24;
+        dt->day++;
+    }
 
-static uint32_t get_day_of_month(){
-    return bcd2hex(read_cmos(CMOS_MON_DAY));
-}
-
-static uint32_t get_day_of_week(){
-    return bcd2hex(read_cmos(CMOS_WEEK_DAY));
-}
-
-​static​ ​uint32_t​ ​get_mon​()​{
-    return​ ​bcd2hex​(​read_cmos​(​CMOS_CUR_MON​));
-​} 
-
-static​ uint32_t​ get_year​()​{​
-    return​ (​bcd2hex​(​read_cmos​(​CMOS_CUR_CEN​)) *​ 100​) + bcd2hex​(​read_cmos​(​CMOS_CUR_YEAR​)) +​ 1980​;
-} 
-
-static​ int ​is_leap_year​(​int​ year​){
-    ​if (​year % 4 != 0​)
-        return ​0​;
-    if (​year %​400 == 0​)
-        return ​1​;
-    return year % 100 != ​0​;
+    // 考虑月份变化
+    const int days_per_month[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    if (is_leap_year(dt->year)){
+        days_per_month[2]++;
+    }
+    
+    while (dt->day > days_per_month[dt->month]){
+        dt->day -= days_per_month[dt->month];
+        dt->month++;
+        if (dt->month > 12){
+            dt->month = 1;
+            dt->year++;
+        }
+    }
 }
 
 void get_date_time(){
-    int year = get_year(), month = get_month(), day = get_day_of_month();
-    int hour = get_hour(), min = get_min(), sec = get_sec();
-    int day_of_months[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-    if (is_leap_year(year))
-        day_of_months[2] ++;
-#ifdef NEED_UTC_8
-    hour += 8;
-    if (hour >= 24){
-        hour -= 1;
-        day ++;
-    }
-    if (day > day_of_months[month]){
-        day = 1;
-        month ++;
-    }
-    if (month > 12){
-        month = 1;
-        year++
-    }
+    struct DateTime dt = get_current_datetime();
+
+    #ifdef NEED_UTC_8
+        adjust_to_utc8(&dt);
     #endif
-    console_write_dec(year, rc_black, rc_white);
+
+    console_write_dec(dt.year, rc_black, rc_white);
     console_write("/");
-    console_write_dec(month, rc_black, rc_white);
+    console_write_dec(dt.month, rc_black, rc_white);
     console_write("/");
-    console_write_dec(day, rc_black, rc_white);
-    console_write("/");
-    console_write_dec(hour, rc_black, rc_white);
-    console_write("/");
-    console_write_dec(min, rc_black, rc_white);
-    console_write("/");
-    console_write_dec(sec, rc_black, rc_white);
-//    console_write("/n");
+    console_write_dec(dt.day, rc_black, rc_white);
+    console_write(" ");
+    console_write_dec(dt.hour, rc_black, rc_white);
+    console_write(":");
+    console_write_dec(dt.minute, rc_black, rc_white);
+    console_write(":");
+    console_write_dec(dt.second, rc_black, rc_white);
+    console_write("\n");
 }
