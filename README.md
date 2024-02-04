@@ -1,27 +1,15 @@
-ＰＰＰＰＰＰＰＰ　　　　　　　　ｉｉ　　　　　　ＥＥＥＥＥＥＥＥＥＥ　　　　　　ＯＯＯＯＯＯ　　　　　　　　ＳＳＳＳＳＳ
-ＰＰ　　　　　　ＰＰ　　　　　　　　　　　　　　ＥＥ　　　　　　　　　　　　ＯＯ　　　　　　ＯＯ　　　　ＳＳ　　　　　　ＳＳ
-ＰＰ　　　　　　ＰＰ　　　　ｉｉｉｉ　　　　　　ＥＥ　　　　　　　　　　　　ＯＯ　　　　　　ＯＯ　　　　ＳＳ　　　　　　ＳＳ
-ＰＰ　　　　　　ＰＰ　　　　　　ｉｉ　　　　　　ＥＥ　　　　　　　　　　　　ＯＯ　　　　　　ＯＯ　　　　　　ＳＳ
-ＰＰＰＰＰＰＰＰ　　　　　　　　ｉｉ　　　　　　ＥＥＥＥＥＥＥＥＥＥ　　　　ＯＯ　　　　　　ＯＯ　　　　　　　　ＳＳ
-ＰＰ　　　　　　　　　　　　　　ｉｉ　　　　　　ＥＥ　　　　　　　　　　　　ＯＯ　　　　　　ＯＯ　　　　　　　　　　ＳＳ
-ＰＰ　　　　　　　　　　　　　　ｉｉ　　　　　　ＥＥ　　　　　　　　　　　　ＯＯ　　　　　　ＯＯ　　　　ＳＳ　　　　　　ＳＳ
-ＰＰ　　　　　　　　　　　　　　ｉｉ　　　　　　ＥＥ　　　　　　　　　　　　ＯＯ　　　　　　ＯＯ　　　　ＳＳ　　　　　　ＳＳ
-ＰＰ　　　　　　　　　　　　ｉｉｉｉｉｉ　　　　ＥＥＥＥＥＥＥＥＥＥ　　　　　　ＯＯＯＯＯＯ　　　　　　　　ＳＳＳＳＳＳ
-
-
 English | [简体中文](README_zh.md)
 
 ## Build
 
-<i><strong> Note: You may need to install qemu, gcc, g++, GNU make, git and grub-mkrescue before build.</strong></i>
+<i><strong> Note: You may need to install qemu, gcc, g++, GNU make and git before build.</strong></i>
 
-Install gcc, g++, GNU make, git, nasm and grub-mkrescue
+Install gcc, g++, GNU make, git and nasm
 
 ```bush
 sudo apt install build-essential
 sudo apt install git
 sudo apt install nasm
-sido apt install grub-pc-bin
 ```
 
 Install qemu and create a link
@@ -50,10 +38,24 @@ make
 use this command to boot PiEOS
 
 ```
-make qemu
+qemu make
 ```
 
 ## Updates
+
+<details>
+
+<summary>0.0.6 Alpha</summary>
+
+- boot by iso
+
+- fix some problems
+
+- add debug
+
+- support strings
+
+</details>
 
 <details>
 

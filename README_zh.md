@@ -3,17 +3,16 @@
 ## 编译
 
 
-<i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make，git 和 grub-mkrescue 。</strong></i>
+<i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make 和 git 。</strong></i>
 
 准备工作
 
-1. 安装 git，gcc，g++，GNU make，NASM 和 grub-mkrescue
+1. 安装git，gcc，g++，GNU make，NASM
 
 ```bush
 sudo apt install git
 sudo apt install build-essential
 sudo apt install nasm
-sudo apt install grub-pc-bin
 ```
 
 
@@ -55,6 +54,20 @@ qemu make
 
 
 ## 更新
+
+<details>
+
+<summary>0.0.6 Alpha</summary>
+
+- 由 iso 启动
+
+- 修复了一些问题
+
+- 增加 debug 功能
+
+- 支持字符串
+
+</details>
 
 <details>
 
