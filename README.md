@@ -18,7 +18,7 @@ Install qemu and create a link
 sudo apt install qemu
 sudo apt install qemu-system
 
-sudo ln -s /usr/bin/qemu-system-i386 /usr/bin qemu
+sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 ```
 
 Clone the repo
