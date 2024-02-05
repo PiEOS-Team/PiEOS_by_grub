@@ -22,7 +22,7 @@ C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protect
 LD_FLAGS = -T scripts/kernel.ld -m elf_i386 -nostdlib
 ASM_FLAGS = -f elf -g -F stabs
 
-all: $(S_OBJECTS) $(C_OBJECTS) link update_image
+all: link pieos_kernel
 
 # The automatic variable `$<' is just the first prerequisite
 .c.o:
@@ -41,24 +41,39 @@ link:
 clean:
 	$(RM) $(S_OBJECTS) $(C_OBJECTS) pieos_kernel
 
-.PHONY:update_image
-update_image:
-	sudo mount floppy.img /mnt/kernel
-	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
-	sleep 1
-	sudo umount /mnt/kernel
+.PHONY:iso
+pieos_kernel.iso:pieos_kernel
+	mkdir iso
+	mkdir iso/boot
+	mkdir iso/boot/grub
+	cp $< iso/boot/
+	echo 'set timeout=5' > iso/boot/grub/grub.cfg
+	echo 'set default=0' >> iso/boot/grub/grub.cfg
+	echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
+	echo '	multiboot /boot/rainyos_kernel' >> iso/boot/grub/grub.cfg
+	echo '	boot' >> iso/boot/grub/grub.cfg
+	echo '}' >> iso/boot/grub/grub.cfg
+	grub-mkrescue --output=$@ iso
+	rm -rf iso
 
-.PHONY:mount_image
-mount_image:
-	sudo mount floppy.img /mnt/kernel
+#.PHONY:update_image
+#update_image:
+#	sudo mount floppy.img /mnt/kernel
+#	sudo cp pieos_kernel /mnt/kernel/pieos_kernel
+#	sleep 1
+#	sudo umount /mnt/kernel
 
-.PHONY:umount_image
-umount_image:
-	sudo umount /mnt/kernel
+#.PHONY:mount_image
+#mount_image:
+#	sudo mount floppy.img /mnt/kernel
+
+#.PHONY:umount_image
+#umount_image:
+#	sudo umount /mnt/kernel
 
 .PHONY:qemu
 qemu:
-	qemu -fda floppy.img -boot a	
+	qemu -cdrom pieos_kernel.iso
 	#add '-nographic' option if using server of linux distro, such as fedora-server,or "gtk initialization failed" error will occur.
 
 .PHONY:bochs
