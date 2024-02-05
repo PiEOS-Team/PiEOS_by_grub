@@ -17,6 +17,7 @@ S_OBJECTS = $(patsubst %.s, %.o, $(S_SOURCES))
 CC = gcc
 LD = ld
 ASM = nasm
+RM = rm
 
 C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protector -I include
 LD_FLAGS = -T scripts/kernel.ld -m elf_i386 -nostdlib
@@ -75,10 +76,6 @@ pieos_kernel.iso:pieos_kernel
 qemu:
 	qemu -cdrom pieos_kernel.iso
 	#add '-nographic' option if using server of linux distro, such as fedora-server,or "gtk initialization failed" error will occur.
-
-.PHONY:bochs
-bochs:
-	bochs -f scripts/bochsrc.txt
 
 .PHONY:debug
 debug:
