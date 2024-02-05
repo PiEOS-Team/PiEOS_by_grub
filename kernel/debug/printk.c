@@ -66,7 +66,7 @@ static int skip_atoi(const char **s){
 #define ZEROPAD 1    // pad with zero
 #define SIGN 2    // unsigned/signed long
 #define PLUS 4    // show plus
-#define SPACE 8   b// space if plus
+#define SPACE 8   // space if plus
 #define LEFT 16    // left justified
 #define SPECIAL 32    // 0x
 #define SMALL 64    // use 'abcdef' instead of 'ABCDEF'
@@ -113,7 +113,7 @@ static char *number(char *str, int num, int base, int size, int precision, int t
 		}
 	}
 	i = 0;
-	if (num == 0{
+	if (num == 0){
 		tmp[i++] = '0';
 	}
 	else{
