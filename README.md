@@ -2,7 +2,7 @@ English | [简体中文](README_zh.md)
 
 ## Build
 
-<i><strong> Note: You may need to install qemu, gcc, g++, GNU make, git and xorriso before build.</strong></i>
+<i><strong> Note: You may need to install qemu, gcc, g++, GNU make, git and xorriso also mtools before build.</strong></i>
 
 Install gcc, g++, GNU make, git, nasm and xorriso
 
@@ -11,6 +11,7 @@ sudo apt install build-essential
 sudo apt install git
 sudo apt install nasm
 sudo apt install xorriso
+sudo apt install mtools
 ```
 
 Install qemu and create a link

@@ -3,7 +3,7 @@
 ## 编译
 
 
-<i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make，git 和 xorriso。</strong></i>
+<i><strong> 注意：你可能需要在编译前安装 qemu，gcc，g++，GNU make，git 和 xorriso，以及 mtools。</strong></i>
 
 准备工作
 
@@ -14,6 +14,7 @@ sudo apt install git
 sudo apt install build-essential
 sudo apt install nasm
 sudo apt install xorriso
+sudo apt install mtools
 ```
 
 

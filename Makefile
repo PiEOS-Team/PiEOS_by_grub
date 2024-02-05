@@ -23,7 +23,7 @@ C_FLAGS = -c -Wall -m32 -ggdb -gstabs+ -nostdinc -fno-builtin -fno-stack-protect
 LD_FLAGS = -T scripts/kernel.ld -m elf_i386 -nostdlib
 ASM_FLAGS = -f elf -g -F stabs
 
-all: link pieos_kernel
+all:$(S_OBJECTS) $(C_OBJECTS) link pieos_kernel
 
 # The automatic variable `$<' is just the first prerequisite
 .c.o:
@@ -51,7 +51,7 @@ pieos_kernel.iso:pieos_kernel
 	echo 'set timeout=5' > iso/boot/grub/grub.cfg
 	echo 'set default=0' >> iso/boot/grub/grub.cfg
 	echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
-	echo '	multiboot /boot/rainyos_kernel' >> iso/boot/grub/grub.cfg
+	echo '	multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg
 	echo '	boot' >> iso/boot/grub/grub.cfg
 	echo '}' >> iso/boot/grub/grub.cfg
 	grub-mkrescue --output=$@ iso
