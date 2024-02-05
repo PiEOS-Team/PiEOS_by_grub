@@ -20,10 +20,11 @@
 
 int kern_entry(){
     init_debug();
+    init_gdt();
     
 	console_clear();
 	
-	printk_color(rc_black, rc_green, "This is printk!"\n);
+	printk_color(rc_black, rc_green, "This is printk!\n);
 	
 	console_write_color("The quick brown fox jumps over a lazy dog.\n", rc_black, rc_green);
 	
