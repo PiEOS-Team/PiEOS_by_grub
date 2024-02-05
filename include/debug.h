@@ -27,7 +27,7 @@
 #define assert(x, info)\
     do{\
         if (!(x)){\
-            panic(info);
+            panic(info);\
         }\
     } while (0)
 
@@ -48,6 +48,6 @@ void print_cur_status();
 void printk(const char *format, ...);
 
 // 内核的打印函数，带颜色
-void printk_color(real_color_t back, real_color_t fore, const chat *format, ...);
+void printk_color(real_color_t back, real_color_t fore, const char *format, ...);
 
 #endif
