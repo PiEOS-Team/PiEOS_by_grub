@@ -39,11 +39,30 @@ make
 
 use this command to boot PiEOS
 
+
 ```
-qemu make
+make qemu-iso
+```
+
+or
+
+```
+make qemu-flp
 ```
 
 ## Updates
+
+<details>
+
+<summary>0.0.9 Alpha</summary>
+
+- fixed a bug that could cause the computer to crash
+
+- Added the option to select iso or floppy boot
+
+- Add debugging function
+
+</details>
 
 <details>
 
@@ -52,8 +71,6 @@ qemu make
 - boot by iso
 
 - fix some problems
-
-- add debug
 
 - support strings
 

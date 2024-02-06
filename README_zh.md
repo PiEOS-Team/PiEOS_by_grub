@@ -18,7 +18,7 @@ sudo apt install mtools
 ```
 
 
-安装qemu并建立链接
+2. 安装qemu并建立链接
 
 
 ```bush
@@ -29,7 +29,7 @@ sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 ```
 
 
-克隆仓库
+3. 克隆仓库
 
 
 ```bush
@@ -37,7 +37,7 @@ git clone https://github.com/PiEOS-Team/PiEOS.git
 ```
 
 
-使用 `make` 编译文件
+4. 使用 `make` 编译文件
 
 
 ```bush
@@ -51,11 +51,28 @@ make
 使用此命令来启动PiEOS
 
 ```bush
-qemu make
+make-iso
 ```
 
+或
+
+```
+make-flp
+```
 
 ## 更新
+
+<details>
+
+<summary>0.0.9 Alpha</summary>
+
+- 修复一个可能导致死机的问题
+
+- 可选择 iso 启动或软盘启动
+
+- 增加 debug 功能
+
+</details>
 
 <details>
 
@@ -64,8 +81,6 @@ qemu make
 - 由 iso 启动
 
 - 修复了一些问题
-
-- 增加 debug 功能
 
 - 支持字符串
 
