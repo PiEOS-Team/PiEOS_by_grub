@@ -17,10 +17,15 @@
 
 
 #include "console.h"
+#include "debug.h"
+#include "gdt.h"
+#include "idt.h"
+#include "timer.h"
 
 int kern_entry(){
     init_debug();
     init_gdt();
+    init_idt();
     
 	console_clear();
 	
@@ -30,7 +35,10 @@ int kern_entry(){
 	
 	console_write_color("!\"#$&\'()*+,-./:;<=>?@[\\]^_`{|}~\n", rc_black, rc_green);
 	
-	panic("panic test");
+	init_timer(200);
+	
+	// 开启中断
+	asm volatile ("sti");
 	
 	return 0;
 }
