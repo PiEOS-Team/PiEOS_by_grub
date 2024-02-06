@@ -4,7 +4,7 @@ English | [简体中文](README_zh.md)
 
 <i><strong> Note: You may need to install qemu, gcc, g++, GNU make, git and xorriso also mtools before build.</strong></i>
 
-Install gcc, g++, GNU make, git, nasm and xorriso
+1. Install gcc, g++, GNU make, git, nasm and xorriso
 
 ```bush
 sudo apt install build-essential
@@ -14,7 +14,7 @@ sudo apt install xorriso
 sudo apt install mtools
 ```
 
-Install qemu and create a link
+2. Install qemu and create a link
 
 ```bush
 sudo apt install qemu
@@ -23,13 +23,13 @@ sudo apt install qemu-system
 sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 ```
 
-Clone the repo
+3. Clone the repo
 
 ```bush
 git clone https://github.com/PiEOS-Team/PiEOS.git
 ```
 
-Use `make` to make files
+4. Use `make` to make files
 
 ```bush
 make
