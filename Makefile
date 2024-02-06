@@ -46,7 +46,7 @@ clean:
 pieos_kernel.iso:pieos_kernel
 	mkdir -p iso/boot/grub
 	cp $< iso/boot/
-	echo 'set timeout=5' > iso/boot/grub/grub.cfg
+	echo 'set timeout=1' > iso/boot/grub/grub.cfg
 	echo 'set default=0' >> iso/boot/grub/grub.cfg
 	echo 'menuentry "PiEOS"{' >> iso/boot/grub/grub.cfg
 	echo '	multiboot /boot/pieos_kernel' >> iso/boot/grub/grub.cfg
@@ -64,13 +64,15 @@ update_image:
 	sudo umount /mnt/kernel
 	sudo rm -r /mnt/kernel
 
-#.PHONY:mount_image
-#mount_image:
-#	sudo mount floppy.img /mnt/kernel
+.PHONY:mount_image
+mount_image:
+	sudo mkdir /mnt/kernel
+	sudo mount pieos_kernel.img /mnt/kernel
 
-#.PHONY:umount_image
-#umount_image:
-#	sudo umount /mnt/kernel
+.PHONY:umount_image
+umount_image:
+	sudo umount /mnt/kernel
+	sudo rm -r /mnt/kernel
 
 .PHONY:qemu-iso
 qemu-iso:
@@ -81,9 +83,15 @@ qemu-flp:
 	qemu -fda pieos_kernel.img -boot a
 	#add '-nographic' option if using server or linux distro, such as fedora-server, or "gtk initialization failed" error will occur.
 
-.PHONY:debug
-debug:
+.PHONY:debug-iso
+debug-iso:
 	qemu -cdrom pieos_kernel.iso -S -s &
-	sleep 5
+	sleep 1
+	cgdb -x scripts/gdbinit
+
+.PHONY:debug-flp
+debug-flp:
+	qemu -S -s -fda pieos_kernel.img -boot a &
+	sleep 1
 	cgdb -x scripts/gdbinit
 
