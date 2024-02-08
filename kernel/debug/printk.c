@@ -5,7 +5,7 @@
  *
  *    Description:  
  *
- *        Version:  0.0.7Alpha
+ *        Version:  0.1
  *        Created:  2024年2月5日 14时15分6秒
  *       Revision:  none
  *       Compiler:  gcc
@@ -14,6 +14,7 @@
  *
  * =====================================================================================
  */
+
 #include "console.h"
 #include "string.h"
 #include "vargs.h"
@@ -51,7 +52,7 @@ void printk_color(real_color_t back, real_color_t fore, const char *format, ...)
 	console_write_color(buff, back, fore);
 }
 
-#define is_digit(c) ((c) >= '0' && (c) <= '9')
+#define is_digit(c)	((c) >= '0' && (c) <= '9')
 
 static int skip_atoi(const char **s){
 	int i = 0;
@@ -63,13 +64,13 @@ static int skip_atoi(const char **s){
 	return i;
 }
 
-#define ZEROPAD 1    // pad with zero
-#define SIGN 2    // unsigned/signed long
-#define PLUS 4    // show plus
-#define SPACE 8   // space if plus
-#define LEFT 16    // left justified
-#define SPECIAL 32    // 0x
-#define SMALL 64    // use 'abcdef' instead of 'ABCDEF'
+#define ZEROPAD		1	// pad with zero
+#define SIGN	 	2   	// unsigned/signed long
+#define PLUS    	4	// show plus
+#define SPACE	  	8   	// space if plus
+#define LEFT	 	16  	// left justified
+#define SPECIAL		32  	// 0x
+#define SMALL	  	64  	// use 'abcdef' instead of 'ABCDEF'
 
 #define do_div(n,base) ({ \
 		int __res; \
@@ -204,7 +205,7 @@ static int vsprintf(char *buff, const char *format, va_list args){
 		else if (*format == '*'){
 			// it's the next argument
 			field_width = va_arg(args, int);
-			if (field_width < 0) {
+			if (field_width < 0){
 				field_width = -field_width;
 				flags |= LEFT;
 			}
@@ -213,9 +214,9 @@ static int vsprintf(char *buff, const char *format, va_list args){
 		// get the precision
 		precision = -1;
 		if (*format == '.'){
-			++format;	
-			if (is_digit(*format)){
-				precision = skip_atoi(&format);
+			++format;
+		    if (is_digit(*format)){
+			    precision = skip_atoi(&format);
 			}
 			else if (*format == '*'){
 				// it's the next argument
@@ -275,7 +276,7 @@ static int vsprintf(char *buff, const char *format, va_list args){
 			break;
 
 		case 'p':
-			if (field_width == -1){
+			if (field_width == -1) {
 				field_width = 8;
 				flags |= ZEROPAD;
 			}
