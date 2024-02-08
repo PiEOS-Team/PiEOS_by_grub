@@ -26,12 +26,13 @@ sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 3. Clone the repo
 
 ```bush
-git clone https://github.com/PiEOS-Team/PiEOS.git
+git clone https://github.com/PiEOS-Team/PiEOS_by_grub.git
 ```
 
-4. Use `make` to make files
+4. Use `make` to compile files
 
 ```bush
+cd PiEOS_by_grub
 make
 ```
 
@@ -54,61 +55,16 @@ make qemu-flp
 
 <details>
 
-<summary>0.0.9 Alpha</summary>
+<summary>0.1</summary>
 
-- fixed a bug that could cause the computer to crash
-
-- Added the option to select iso or floppy boot
-
-- Add debugging function
+- refactoring all the OS
 
 </details>
 
-<details>
-
-<summary>0.0.6 Alpha</summary>
-
-- boot by iso
-
-- fix some problems
-
-- support strings
-
-</details>
-
-<details>
-
-<summary>0.0.4 Alpha</summary>
-
-- fix some problems
-
-- compiled by RainySoft-Team
-
-- thanks RainySoft-Team very much
-
-</details>
-
-<details>
-
-<summary>0.0.3 Alpha</summary>
-
-- add some func of input/output
-
-- remove HIM :)
-
-</details>
-
-<details>
-
-<summary>0.0.2 Alpha</summary>
-
-- fix the problem of cannot compile (missing floppy.img)
-
-</details>
 
 ## Developers
 
-kuqilin
+PiEOS-Team
 
 ## Thanks
 

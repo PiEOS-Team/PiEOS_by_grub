@@ -33,7 +33,7 @@ sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 
 
 ```bush
-git clone https://github.com/PiEOS-Team/PiEOS.git
+git clone https://github.com/PiEOS-Team/PiEOS_by_grub.git
 ```
 
 
@@ -41,6 +41,7 @@ git clone https://github.com/PiEOS-Team/PiEOS.git
 
 
 ```bush
+cd PiEOS_by_grub
 make
 ```
 
@@ -51,81 +52,29 @@ make
 使用此命令来启动PiEOS
 
 ```bush
-make-iso
+make qemu-iso
 ```
 
 或
 
 ```
-make-flp
+make qemu-flp
 ```
 
 ## 更新
 
 <details>
 
-<summary>0.0.9 Alpha</summary>
+<summary>0.1</summary>
 
-- 修复一个可能导致死机的问题
-
-- 可选择 iso 启动或软盘启动
-
-- 增加 debug 功能
-
-</details>
-
-<details>
-
-<summary>0.0.6 Alpha</summary>
-
-- 由 iso 启动
-
-- 修复了一些问题
-
-- 支持字符串
-
-</details>
-
-<details>
-
-<summary>0.0.4 Alpha</summary>
-
-- 修复了一些问题
-
-- 由RainySoft-Team编译
-
-- 非常感谢RainySoft-Team
-
-</details>
-
-<details>
-
-
-<summary>0.0.3 Alaph</summary>
-
-
-- 增加输入输出函数
-
-
-- 移除了HIM :)
-
-
-</details>
-
-
-<details>
-
-
-<summary>0.0.2 Alaph</summary>
-
-- 修复了无法编译的问题（缺少floppy.img）
+- 重构了整个系统
 
 </details>
 
 
 ## 开发者
 
-kuqilin
+PiEOS-Team
 
 ## 特别鸣谢
 
