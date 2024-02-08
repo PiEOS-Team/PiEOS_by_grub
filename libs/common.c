@@ -5,7 +5,7 @@
  *
  *    Description:  几个屏幕打印函数
  *
- *        Version:  
+ *        Version:  0.1
  *        Created:  2023年12月10日 08时42分04秒
  *       Revision:  none
  *       Compiler:  gcc
@@ -25,13 +25,27 @@ inline void outb(uint16_t port, uint8_t value){
 // 端口读一个字节
 inline uint8_t inb(uint16_t port){
 	uint8_t ret;
+
 	asm volatile("inb %1, %0" : "=a" (ret) : "dN" (port));
+
 	return ret;
 }
 
 // 端口读一个字
 inline uint16_t inw(uint16_t port){
 	uint16_t ret;
+
 	asm volatile ("inw %1, %0" : "=a" (ret) : "dN" (port));
+
 	return ret;
+}
+
+// 开启中断
+inline void enable_intr(){
+    asm volatile ("sti");
+}
+
+// 关闭中断
+inline void disable_intr(){
+    asm volatile ("cli" ::: "memory");
 }
