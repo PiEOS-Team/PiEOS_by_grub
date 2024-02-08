@@ -5,7 +5,7 @@
  *
  *    Description:  PIT 相关
  *
- *        Version:  0.0.10Alpha
+ *        Version:  0.1
  *        Created:  2024年2月6日 20时09分45秒
  *       Revision:  none
  *       Compiler:  gcc
@@ -19,10 +19,10 @@
 #include "debug.h"
 #include "common.h"
 #include "idt.h"
+#include "sched.h"
 
 void timer_callback(pt_regs *regs){
-	static uint32_t tick = 0;
-	printk_color(rc_black, rc_red, "Tick: %d\n", tick++);
+	schedule();
 }
 
 void init_timer(uint32_t frequency){
