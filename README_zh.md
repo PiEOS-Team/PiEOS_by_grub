@@ -10,11 +10,7 @@
 1. 安装git，gcc，g++，GNU make，NASM，xorriso
 
 ```bush
-sudo apt install git
-sudo apt install build-essential
-sudo apt install nasm
-sudo apt install xorriso
-sudo apt install mtools
+sudo apt install git build-essential nasm xorriso mtools
 ```
 
 
@@ -22,8 +18,7 @@ sudo apt install mtools
 
 
 ```bush
-sudo apt install qemu
-sudo apt install qemu-system
+sudo apt install qemu qemu-system
 
 sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 ```
