@@ -7,18 +7,13 @@ English | [简体中文](README_zh.md)
 1. Install gcc, g++, GNU make, git, nasm and xorriso
 
 ```bush
-sudo apt install build-essential
-sudo apt install git
-sudo apt install nasm
-sudo apt install xorriso
-sudo apt install mtools
+sudo apt install build-essential git nasm xorriso install mtools
 ```
 
 2. Install qemu and create a link
 
 ```bush
-sudo apt install qemu
-sudo apt install qemu-system
+sudo apt install qemu qemu-system
 
 sudo ln -s /usr/bin/qemu-system-i386 /usr/bin/qemu
 ```
